@@ -1,0 +1,14 @@
+<br>
+<h4>Game of Throne</h4>
+<hr>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6">
+    <div class="col card-group" *ngFor="let character of characters" style="margin-bottom: 20px;">
+        <div class="card border-dark">
+            <img [src]="character.imageUrl" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">{{character.fullName}}</h5>
+                <p class="card-text"><span class="badge bg-secondary">Título:</span> {{character.title}}</p>
+            </div>
+        </div>
+    </div>
+</div>
