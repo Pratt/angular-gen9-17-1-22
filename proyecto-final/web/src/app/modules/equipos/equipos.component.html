@@ -1,0 +1,8 @@
+<h2 style="display: inline;">Equipos</h2>
+<button type="button" class="btn btn-success btn-sm" *ngIf="cantidad" style="margin-top: -15px; margin-left: 10px;"
+    [routerLink]="['/equipos']"><i class="fa-solid fa-circle-plus"></i> Mostrar todos</button>
+
+<div class="row row-cols-auto">
+    <app-card-equipo [equipo]="equipo" *ngFor="let equipo of equipos" [style]="cantidad ? 'max-width: 300px;' : ''">
+    </app-card-equipo>
+</div>

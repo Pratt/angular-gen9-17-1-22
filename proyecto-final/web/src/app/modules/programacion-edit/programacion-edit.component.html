@@ -1,0 +1,60 @@
+<div class="card col-auto" style="max-width: 700px; margin-top: 10px;">
+
+    <form [formGroup]="form1" (ngSubmit)="guardar()">
+
+        <div class="card-header">Editar encuentro</div>
+        <div class="card-body">
+
+            <div class="form-floating mb-2">
+                <select id="equipo_local" formControlName="equipo_local" class="form-select"
+                    [class.is-invalid]="form1.get('equipo_local')?.invalid">
+                    <option [value]="equipo.id" *ngFor="let equipo of equipos">{{equipo.nombre}}</option>
+                </select>
+                <label for="equipo_local">Equipo local</label>
+            </div>
+
+            <div class="form-floating mb-2">
+                <select id="equipo_visita" formControlName="equipo_visita" class="form-select"
+                    [class.is-invalid]="form1.get('equipo_visita')?.invalid">
+                    <option [value]="equipo.id" *ngFor="let equipo of equipos">{{equipo.nombre}}</option>
+                </select>
+                <label for="equipo_visita">Equipo visita</label>
+            </div>
+
+            <div class="form-floating mb-2">
+                <select id="cancha" formControlName="cancha" class="form-select"
+                    [class.is-invalid]="form1.get('cancha')?.invalid">
+                    <option [value]="cancha.id" *ngFor="let cancha of canchas">{{cancha.nombre}}</option>
+                </select>
+                <label for="cancha">Cancha</label>
+            </div>
+
+            <div class="form-floating mb-2">
+                <input type="date" id="fecha" formControlName="fecha" class="form-control" placeholder="Fecha"
+                    [class.is-invalid]="form1.get('fecha')?.invalid">
+                <label for="fecha">Fecha</label>
+            </div>
+
+            <div class="form-floating mb-2">
+                <input type="time" id="hora" formControlName="hora" class="form-control" placeholder="Hora"
+                    [class.is-invalid]="form1.get('hora')?.invalid">
+                <label for="hora">Hora</label>
+            </div>
+
+            <div class="form-floating mb-2">
+                <select id="arbitro" formControlName="arbitro" class="form-select"
+                    [class.is-invalid]="form1.get('arbitro')?.invalid">
+                    <option [value]="arbitro.id" *ngFor="let arbitro of arbitros">{{arbitro.nombre}}</option>
+                </select>
+                <label for="arbitro">Árbitro</label>
+            </div>
+
+        </div>
+
+        <div class="card-footer text-muted text-center">
+            <button type="submit" class="btn btn-primary">Grabar</button>
+        </div>
+
+    </form>
+
+</div>

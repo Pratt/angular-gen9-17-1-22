@@ -1,0 +1,38 @@
+<div class="col" style="max-width: 700px; margin-bottom: 20px;">
+    <div class="card text-center border-primary">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-5">
+                    <h5 class="card-title">{{partido.equipo_local_obj?.nombre}}</h5>
+                </div>
+                <div class="col-5 offset-2">
+                    <h5 class="card-title">{{partido.equipo_visita_obj?.nombre}}</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5">
+                    <div class="row">
+                        <div class="col-10">
+                            <img [src]="'/assets/img/equipos/'+partido.equipo_local_obj?.logo" class="img-fluid">
+                        </div>
+                        <div class="col-2 d-flex align-items-center justify-content-center gol">{{partido.goles_local}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 d-flex align-items-center justify-content-center">-</div>
+                <div class="col-5">
+                    <div class="row">
+                        <div class="col-2 d-flex align-items-center justify-content-center gol">{{partido.goles_visita}}
+                        </div>
+                        <div class="col-10">
+                            <img [src]="'/assets/img/equipos/'+partido.equipo_visita_obj?.logo" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="card-text p-0 m-0">Cancha: {{partido.cancha_obj?.nombre}}</p>
+            <p class="card-text p-0 m-0">Árbitro: {{partido.arbitro_obj?.nombre}}</p>
+            <p class="card-text p-0 m-0">{{partido.fecha | date:'long'}}</p>
+        </div>
+    </div>
+</div>

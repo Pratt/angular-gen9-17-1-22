@@ -1,0 +1,32 @@
+<h2>Tabla de clasificación</h2>
+
+<div class="row">
+    <div class="col-auto">
+        <table class="table table-secondary table-hover table-bordered table-striped border-primary">
+            <thead>
+                <tr>
+                    <th>Posición</th>
+                    <th>Puntos</th>
+                    <th>Equipo</th>
+                    <th>Goles a favor</th>
+                    <th>Goles en contra</th>
+                    <th>Partidos jugados</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let c of clasificacion; let i = index;">
+                    <td>{{i+1}}º</td>
+                    <td>{{c.puntos}}</td>
+                    <td>
+                        <img [src]="'/assets/img/equipos/'+c.equipo_obj?.logo" class="img" width="45"
+                            style="border: 1px solid gray; border-radius: 5px; margin-right: 10px;">
+                        <a [routerLink]="['/equipo', c.equipo]">{{c.equipo_obj?.nombre}}</a>
+                    </td>
+                    <td>{{c.goles_a_favor}}</td>
+                    <td>{{c.goles_en_contra}}</td>
+                    <td>{{c.partidos_jugados}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

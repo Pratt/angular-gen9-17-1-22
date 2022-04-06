@@ -1,0 +1,56 @@
+<div class="card col-auto" style="max-width: 700px; margin-top: 10px;">
+
+    <form [formGroup]="form1" (ngSubmit)="guardar()">
+
+        <div class="card-header">Editar equipo</div>
+        <div class="card-body">
+
+            <h5 class="card-title">{{equipo.nombre}}</h5>
+
+            <div class="form-floating mb-2">
+                <input type="text" id="nombre" formControlName="nombre" class="form-control" placeholder="Nombre"
+                    [class.is-invalid]="form1.get('nombre')?.invalid" readonly>
+                <label for="nombre">Nombre</label>
+            </div>
+
+            <div class="form-floating mb-2">
+                <input type="date" id="fecha_afiliacion" formControlName="fecha_afiliacion" class="form-control"
+                    placeholder="Fecha de afiliación" [class.is-invalid]="form1.get('fecha_afiliacion')?.invalid">
+                <label for="nombre">Fecha de afiliación</label>
+            </div>
+
+            <div class="form-floating mb-2">
+                <select id="capitan" formControlName="capitan" class="form-select"
+                    [class.is-invalid]="form1.get('capitan')?.invalid">
+                    <option [value]="jugador.id" *ngFor="let jugador of jugadores">{{jugador.nombre}}</option>
+                </select>
+                <label for="capitan">Capitán</label>
+            </div>
+
+            <div class="form-floating mb-2">
+                <textarea id="descripcion" formControlName="descripcion" class="form-control" placeholder="Descripción"
+                    style="height: 100px;" [class.is-invalid]="form1.get('descripcion')?.invalid"></textarea>
+                <label for="descripcion">Descripción</label>
+            </div>
+
+            <div class="form-floating mb-2">
+                <input type="email" id="email_contacto" formControlName="email_contacto" class="form-control"
+                    placeholder="Email de contacto" [class.is-invalid]="form1.get('email_contacto')?.invalid">
+                <label for="email_contacto">Email de contacto</label>
+            </div>
+
+            <div class="form-floating mb-2">
+                <input type="tel" id="telefono_contacto" formControlName="telefono_contacto" class="form-control"
+                    placeholder="Teléfono de contacto" [class.is-invalid]="form1.get('telefono_contacto')?.invalid">
+                <label for="telefono_contacto">Teléfono de contacto</label>
+            </div>
+
+        </div>
+
+        <div class="card-footer text-muted text-center">
+            <button type="submit" class="btn btn-primary">Grabar</button>
+        </div>
+
+    </form>
+
+</div>

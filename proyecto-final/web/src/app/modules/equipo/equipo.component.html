@@ -1,0 +1,56 @@
+<h4>Información del equipo</h4>
+<hr>
+<h3>{{equipo.nombre}}</h3>
+<div class="row">
+    <div class="col-md-3">
+        <img [src]="'/assets/img/equipos/'+equipo.logo" class="img-fluid"
+            style="border: 2px solid silver; border-radius: 5px;">
+        <p><i class="fa-solid fa-quote-left fa-2x"></i><code>{{equipo.descripcion}}</code></p>
+        <p><span class="badge bg-info text-dark">Afiliado desde:</span> {{equipo.fecha_afiliacion | date:'longDate'}}
+        </p>
+        <p><i class="fa-solid fa-at fa-lg"></i> {{equipo.email_contacto}}</p>
+        <p><i class="fa-solid fa-phone fa-lg"></i> {{equipo.telefono_contacto}}</p>
+        <hr>
+        <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+            <button type="button" class="btn btn-success" [routerLink]="['/equipo/edit', equipo.id]"><i
+                    class="fa-solid fa-file-pen"></i> Modificar equipo</button>
+        </ng-container>
+        <ng-template #loggedOut>
+            <button type="button" class="btn btn-danger" (click)="loginEdit()"><i class="fa-solid fa-user-lock"></i>
+                Modificar equipo</button>
+        </ng-template>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header text-white bg-primary">Jugadores</div>
+            <ul class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action" *ngFor="let jugador of jugadores"
+                    (click)="verJugador(jugador)" style="cursor: pointer;">
+                    <label style="color: gray; margin-right: 10px;">{{jugador.numero_camiseta}}</label>
+                    {{jugador.nombre}} <span *ngIf="jugador.id == equipo.capitan" style="color: blue;"><i
+                            class="fa-solid fa-user"></i>(Capitán)</span></a>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="card-header text-dark bg-warning">Datos del jugador</div>
+                <div class="col-md-2" style="position: relative; min-width: 110px;">
+                    <img src="/assets/img/camiseta.png" class="img">
+                    <div *ngIf="jugador.id > 0"
+                        style="position: absolute; top: 30px; left: 30px; font-size: 36px; width: 50px; text-align: center; color: blue;">
+                        {{jugador.numero_camiseta}}</div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body" *ngIf="jugador.id > 0; else sinJugador">
+                        <h5 class="card-title">{{jugador.nombre}}</h5>
+                        <span class="card-text">Goles: {{jugador.estadisticas?.goles}}</span><br>
+                        <span class="card-text">Partidos jugados: {{jugador.estadisticas?.partidos_jugados}}</span>
+                    </div>
+                    <ng-template #sinJugador>Seleccione un jugador para ver su información</ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

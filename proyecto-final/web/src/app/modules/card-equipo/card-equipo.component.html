@@ -1,0 +1,11 @@
+<div class="col card-group" style="margin-bottom: 20px">
+    <div class="card border-dark text-center w-100">
+        <div class="card-header">{{equipo.nombre}}</div>
+        <img [src]="'/assets/img/equipos/'+equipo.logo" class="card-img-top">
+        <div class="card-body">
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary" (click)="verEquipo(equipo.id)">Ver equipo</button>
+            </div>
+        </div>
+    </div>
+</div>

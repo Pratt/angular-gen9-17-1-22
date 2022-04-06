@@ -1,0 +1,7 @@
+body {
+    background-color: #eee
+}
+
+.nav-link:hover:not(.active) {
+    background-color: #525252 !important
+}
